@@ -1,5 +1,7 @@
-const game = new Phaser.Game({
-    type: Phaser.CANVAS,
+import TrainScene from './scenes/TrainScene.js'
+
+let config = {
+    type: Phaser.AUTO,
     scale: {
         parent: 'game-container',
         width: 1440,
@@ -7,15 +9,6 @@ const game = new Phaser.Game({
         autoCenter: Phaser.Scale.CENTER_BOTH,
         mode: Phaser.Scale.HEIGHT_CONTROLS_WIDTH,
     },
-    backgroundColor: '#000000',
-    physics: {
-        default: 'arcade',
-        arcade: {
-            gravity: { y: 0, x: 0 },
-            debug: false,
-        },
-    },
-});
-
-game.scene.add('GameScene', GameScene);
-game.scene.start('GameScene');
+    scene: [TrainScene]
+};
+const game = new Phaser.Game(config);
