@@ -71,9 +71,16 @@ class TrainScene extends Phaser.Scene {
             callback: () => this.revisor_update(),
             loop: true,
         });
+		
+		this.keyEsc = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
     }
 
     update(time, delta) {
+		if(Phaser.Input.Keyboard.JustDown(this.keyEsc)) {
+			this.scene.pause();
+			this.scene.launch('EscenaPausa');
+			return;
+		}
         if(this.velocitat >= this.velocitat_limit){
             this.derrota = true;
         }
@@ -275,6 +282,8 @@ class TrainScene extends Phaser.Scene {
         this.porta_desactivada_text.setVisible(true);
         this.porta_bar.setFillStyle(0x555555);
         this.derrota = true;
+		
+		this.keyEsc = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
     }
 }
 
